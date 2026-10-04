@@ -43,51 +43,105 @@ st.set_page_config(
 
 st.markdown("""
 <style>
+    /* Títulos principales */
     .main-title {
-        font-size: 42px;
-        font-weight: 800;
+        font-size: 52px !important;
+        font-weight: 900 !important;
         background: linear-gradient(90deg, #38BDF8, #8B5CF6);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         margin-bottom: 0;
+        letter-spacing: -1px;
     }
+
+    /* Subtítulos */
     .subtitle {
         color: #8EA1B8;
-        font-size: 16px;
-        margin-top: 5px;
+        font-size: 19px !important;
+        font-weight: 500;
+        margin-top: 8px;
+        line-height: 1.5;
     }
+
+    /* Tarjetas */
     .card {
         background: #17243A;
         border: 1px solid #243653;
         border-radius: 12px;
         padding: 20px;
         margin: 8px 0;
+        font-size: 16px;
     }
+
+    /* Badge */
     .badge {
         display: inline-block;
         background: #1B2A44;
         color: #FACC15;
         padding: 6px 14px;
         border-radius: 20px;
-        font-weight: bold;
-        font-size: 13px;
+        font-weight: 800;
+        font-size: 14px;
         margin: 4px 0;
     }
+
+    /* Emojis */
     .emojis {
-        font-size: 24px;
+        font-size: 26px;
         letter-spacing: 6px;
     }
+
+    /* Botones */
     .stButton > button {
         background: linear-gradient(90deg, #38BDF8, #8B5CF6);
         color: white;
-        font-weight: bold;
+        font-weight: 800 !important;
+        font-size: 16px !important;
         border: none;
-        padding: 12px 28px;
+        padding: 14px 30px;
         border-radius: 10px;
-        font-size: 15px;
     }
     .stButton > button:hover {
         opacity: 0.9;
+        transform: scale(1.02);
+    }
+
+    /* Headers markdown (###, ##, #) */
+    h1 {
+        font-size: 42px !important;
+        font-weight: 900 !important;
+    }
+    h2 {
+        font-size: 32px !important;
+        font-weight: 800 !important;
+    }
+    h3 {
+        font-size: 24px !important;
+        font-weight: 800 !important;
+        color: #F8FAFC !important;
+    }
+
+    /* Métricas (los números grandes arriba) */
+    [data-testid="stMetricValue"] {
+        font-size: 32px !important;
+        font-weight: 900 !important;
+    }
+    [data-testid="stMetricLabel"] {
+        font-size: 16px !important;
+        font-weight: 700 !important;
+    }
+
+    /* Texto general del cuerpo */
+    .stMarkdown p, .stMarkdown li {
+        font-size: 16px !important;
+        line-height: 1.6;
+    }
+
+    /* Sidebar: los links del menú */
+    section[data-testid="stSidebar"] .stRadio label {
+        font-size: 17px !important;
+        font-weight: 700 !important;
+        padding: 8px 0;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -465,10 +519,12 @@ with st.sidebar:
     st.markdown("""
     <div style="text-align:center;">
         <div style="font-size:50px;">🍫</div>
-        <div class="main-title" style="font-size:22px;">Motor</div>
-        <div style="color:#38BDF8; font-weight:bold; font-size:16px;">Agroindustrial</div>
-        <div style="color:#8EA1B8; font-size:11px; margin-top:6px;">
-            Optimización de<br>Costos y Calidad
+        <div class="main-title" style="font-size:26px;">FOD</div>
+        <div style="color:#38BDF8; font-weight:bold; font-size:13px; margin-top:4px;">
+            Formula · Optimiza · Decide
+        </div>
+        <div style="color:#8EA1B8; font-size:11px; margin-top:8px;">
+            Motor Agroindustrial
         </div>
         <div class="emojis" style="font-size:16px; margin-top:12px;">
             🍫 🍪 🥜 🌾 🍯
@@ -480,28 +536,33 @@ with st.sidebar:
 
     opcion = st.radio(
         "Menú",
-        ["🏠 Inicio", "⚙ Formulación", "🌾 Materias primas", "📊 Resultados", "💾 Descargar app"],
+        [
+            "🏠 Inicio",
+            "⚙ Formulación",
+            "🌾 Materias primas",
+            "📊 Resultados",
+            "💾 Descargar app",
+        ],
         label_visibility="collapsed"
     )
 
     st.markdown("---")
     st.markdown(
         "<div style='text-align:center; color:#8EA1B8; font-size:11px;'>"
-        "Métodos Numéricos • 2026<br>"
+        "FOD · Métodos Numéricos · 2026<br>"
         "LP · Random Forest · Gauss-Jordan"
         "</div>",
         unsafe_allow_html=True
     )
-
 
 # ============================================================
 # VISTA: INICIO
 # ============================================================
 
 if opcion == "🏠 Inicio":
-    st.markdown('<div class="main-title">🍫 Motor de Formulación Agroindustrial</div>',
+    st.markdown('<div class="main-title" style="font-size:56px !important;">🍫 FOD — Motor de Formulación Agroindustrial</div>',
                 unsafe_allow_html=True)
-    st.markdown('<div class="subtitle">Optimización de Costos y Calidad en barras energéticas mediante métodos numéricos e inteligencia artificial</div>',
+    st.markdown('<div class="subtitle">Formula · Optimiza · Decide — Optimización de Costos y Calidad en barras energéticas mediante métodos numéricos e IA</div>',
                 unsafe_allow_html=True)
 
     st.markdown("---")
