@@ -480,7 +480,7 @@ with st.sidebar:
 
     opcion = st.radio(
         "Menú",
-        ["🏠 Inicio", "⚙ Formulación", "🌾 Materias primas", "📊 Resultados"],
+        ["🏠 Inicio", "⚙ Formulación", "🌾 Materias primas", "📊 Resultados", "💾 Descargar app"],
         label_visibility="collapsed"
     )
 
@@ -902,3 +902,113 @@ elif opcion == "📊 Resultados":
                         st.balloons()
                     else:
                         st.error(msg)
+
+
+
+# ============================================================
+# VISTA: DESCARGAR APP
+# ============================================================
+
+elif opcion == "💾 Descargar app":
+    st.markdown('<div class="main-title">💾 Descarga la aplicación</div>',
+                unsafe_allow_html=True)
+    st.markdown('<div class="subtitle">Lleva el Motor Agroindustrial a tu PC para trabajar sin internet</div>',
+                unsafe_allow_html=True)
+
+    st.markdown("---")
+
+    URL_EXE = "https://github.com/motorparaoptimizarcostosycalidad/motor_agro_web/releases/download/v1.1/MotorAgroindustrial.exe"
+
+    col1, col2 = st.columns([1, 1])
+
+    with col1:
+        st.markdown("### 💻 Versión de escritorio (Windows)")
+        st.markdown("""
+        <div class="card">
+            <div style="font-size:50px; text-align:center;">🍫</div>
+            <h3 style="color:#38BDF8; margin-top:15px; text-align:center;">
+                Motor Agroindustrial v1.1
+            </h3>
+            <p>✅ Motor completo: Gauss-Jordan + Programación Lineal + Random Forest</p>
+            <p>✅ 5 gráficos interactivos</p>
+            <p>✅ Generación de reportes PDF</p>
+            <p>✅ Envío por correo electrónico</p>
+            <p>✅ Funciona sin internet</p>
+            <hr style="border-color:#243653;">
+            <p style="color:#8EA1B8; font-size:13px;">
+                📦 Tamaño: ~299 MB<br>
+                🖥️ Requisitos: Windows 10 o superior<br>
+                💾 Espacio libre: 300 MB
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+
+        st.link_button(
+            "⬇ DESCARGAR .EXE",
+            URL_EXE,
+            use_container_width=True
+        )
+
+    with col2:
+        st.markdown("### 📱 Escanea para descargar")
+        st.markdown("""
+        <div class="card" style="text-align:center;">
+            <p style="color:#8EA1B8; font-size:13px;">
+                Apunta la cámara de tu celular al código QR
+                para descargar directamente en tu dispositivo.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+
+        # Generar el QR dinámicamente
+        import qrcode
+        from io import BytesIO
+
+        qr = qrcode.QRCode(
+            version=1,
+            error_correction=qrcode.constants.ERROR_CORRECT_H,
+            box_size=10,
+            border=2,
+        )
+        qr.add_data(URL_EXE)
+        qr.make(fit=True)
+
+        img_qr = qr.make_image(
+            fill_color="#0B1220",
+            back_color="white"
+        ).convert("RGB")
+
+        buf = BytesIO()
+        img_qr.save(buf, format="PNG")
+        buf.seek(0)
+
+        col_qr_a, col_qr_b, col_qr_c = st.columns([1, 2, 1])
+        with col_qr_b:
+            st.image(buf, use_container_width=True)
+
+    st.markdown("---")
+
+    # Instrucciones de instalación
+    st.markdown("### 📖 ¿Cómo instalar el .exe?")
+    st.markdown("""
+    <div class="card">
+        <p><b>1.</b> Descarga el archivo <code>MotorAgroindustrial.exe</code></p>
+        <p><b>2.</b> Guárdalo en una carpeta de tu preferencia (ej: Escritorio)</p>
+        <p><b>3.</b> Haz doble clic para ejecutarlo</p>
+        <p><b>4.</b> La primera vez, Windows mostrará una advertencia azul:</p>
+        <ul style="font-size:13px;">
+            <li>Clic en <b>"Más información"</b></li>
+            <li>Clic en <b>"Ejecutar de todas formas"</b></li>
+        </ul>
+        <p style="color:#F59E0B; font-size:13px; margin-top:12px;">
+            ⚠️ La advertencia es normal porque el programa
+            no tiene firma digital. No contiene virus.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("---")
+    st.markdown(
+        "<div style='text-align:center; font-size:22px;'>🍫 🍪 🥜 🌾 🍯 🌰</div>",
+        unsafe_allow_html=True
+    )
