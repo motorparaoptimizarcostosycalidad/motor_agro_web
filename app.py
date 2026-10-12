@@ -567,6 +567,10 @@ if opcion == "🏠 Inicio":
 
     st.markdown("---")
 
+    st.markdown("### 🎬 Conoce cómo funciona el motor")
+    st.video("https://www.youtube.com/watch?v=BItE9dnAFUI")
+    st.markdown("---")
+
     col1, col2 = st.columns([2, 1])
 
     with col1:
@@ -1069,6 +1073,8 @@ elif opcion == "💾 Descargar app":
     """, unsafe_allow_html=True)
 
     st.markdown("---")
+
+   
     st.markdown(
         "<div style='text-align:center; font-size:22px;'>🍫 🍪 🥜 🌾 🍯 🌰</div>",
         unsafe_allow_html=True
